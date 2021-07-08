@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 import Section from './Components/Section/Section'
 import Input from './Components/Input/Input'
+import Contacts from './Components/Contacts/Contacts'
+
+
+import styles from '../src/App.css';
+
 
 
 class App extends Component {
@@ -45,21 +50,25 @@ state = {
       <section >
         
 
-        <Section  title={'Please leave feedback'}>
+        <Section  title={'Phonebook'}>
 
+          <form className={styles.form} action="">
+            
+            <h2>Name</h2>
+            
           <Input />
+        
+            <button>Add contact</button>
+
+          </form>
+
+          <h2>Contacts</h2>
           
-{/* //           <FeedbackOptions 
-//           options={objKeys}
-//           onLeaveFeedback={this.onBtnClick} /> */}
-
-      </Section>
+          <Contacts name={'Contact-1'}  />
         
-        
-        
-
-
-        </section>
+        </Section>
+              
+      </section>
     );
   }
 }
