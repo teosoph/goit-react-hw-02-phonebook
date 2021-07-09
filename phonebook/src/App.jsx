@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 import Section from "./Components/Section/Section";
 import Form from "./Components/Form/Form";
@@ -13,13 +13,19 @@ export default class App extends Component {
 
   // Add contact function
   addContact = ({ name }) => {
-    this.setState(({ contacts }) => {
-      console.log(contacts);
+    console.log(name);
 
-      return { contacts: [...contacts] };
-    });
+    const { contacts } = this.state;
+    const contact = {
+      id: uuidv4(),
+      name,
+    };
+    console.log(contact);
 
-    // console.log(this.state);
+    contacts.find((contact) => contact.name === name);
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
 
   render() {
