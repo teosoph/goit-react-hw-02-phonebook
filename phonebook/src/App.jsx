@@ -24,7 +24,7 @@ export default class App extends Component {
 
     contacts.find((contact) => contact.name === name);
     this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
+      contacts: [...contacts, contact],
     }));
   };
 

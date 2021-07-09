@@ -1,9 +1,9 @@
 import ContactItem from "../ContactItem/ContactItem";
 
 const ContactsList = ({ contacts }) => (
-  <ul>
+  <ol type="1">
     <ContactItem contacts={contacts} />
-  </ul>
+  </ol>
 );
 
 export default ContactsList;

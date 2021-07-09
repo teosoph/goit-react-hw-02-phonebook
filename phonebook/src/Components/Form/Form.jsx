@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import styles from "../../App.css";
+import styles from "../../App.css";
 
 class Form extends Component {
   state = {
@@ -34,7 +34,7 @@ class Form extends Component {
     // console.log(name);
 
     return (
-      <form onSubmit={this.submitHandler}>
+      <form className={styles.form} onSubmit={this.submitHandler}>
         <label>
           Name
           <input

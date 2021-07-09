@@ -14,8 +14,8 @@ ul {
 }
 li {
   margin-bottom: 20px;
-}
-li:last-child {
+
+  text-transform: capitalize;
   font-size: xxx-large;
   color: blue;
 }
@@ -34,6 +34,7 @@ form {
   align-items: center;
   padding: 0 30px 50px 30px;
 
+  background-color: darkgoldenrod;
   border: 2px solid black;
 }
 
