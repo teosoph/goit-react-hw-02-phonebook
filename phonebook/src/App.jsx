@@ -9,16 +9,18 @@ export default class App extends Component {
   state = {
     contacts: [],
     name: "",
+    number: "",
   };
 
   // Add contact function
-  addContact = ({ name }) => {
-    console.log(name);
+  addContact = ({ name, number }) => {
+    console.log(name, number);
 
     const { contacts } = this.state;
     const contact = {
       id: uuidv4(),
       name,
+      number,
     };
     console.log(contact);
 
