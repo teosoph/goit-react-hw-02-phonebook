@@ -21,8 +21,6 @@ export default class App extends Component {
 
   // Add contact function
   addContact = ({ name, number }) => {
-    console.log(name, number);
-
     const { contacts } = this.state;
     const contact = {
       id: uuidv4(),
@@ -31,10 +29,11 @@ export default class App extends Component {
     };
     console.log(contact);
 
-    contacts.find((contact) => contact.name === name);
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
-    }));
+    contacts.find((contact) => contact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : this.setState(({ contacts }) => ({
+          contacts: [...contacts, contact],
+        }));
   };
 
   // Filtering input function
