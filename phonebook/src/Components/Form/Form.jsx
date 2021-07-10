@@ -32,7 +32,7 @@ class Form extends Component {
   };
 
   render() {
-    const { name, number } = this.state.name;
+    const { name, number } = this.state;
     // console.log(name, number);
 
     return (

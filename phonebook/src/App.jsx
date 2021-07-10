@@ -29,11 +29,13 @@ export default class App extends Component {
     };
     console.log(contact);
 
-    contacts.find((contact) => contact.name === name)
+    contacts.some(
+      ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
+    )
       ? alert(`${name} is already in contacts`)
-      : this.setState(({ contacts }) => ({
-          contacts: [...contacts, contact],
-        }));
+      : contacts.some(({ number }) => number === contact.number)
+      ? alert(`${number} is already in contacts`)
+      : this.setState(({ contacts }) => ({ contacts: [...contacts, contact] }));
   };
 
   // Filtering input function
@@ -48,11 +50,17 @@ export default class App extends Component {
     return contacts.filter((contact) =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-    // .sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  deleteOnClickButton = (id) => {
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter((contact) => contact.id !== id),
+    }));
   };
 
   render() {
     const { filter } = this.state;
+    const contacts = this.changeContactsByFilter();
 
     return (
       <section>
@@ -60,11 +68,15 @@ export default class App extends Component {
           <Form onSubmit={this.addContact} />
         </Section>
 
-        <Section title={"      Filter contacts by name"}>
+        <Section title={"Filter contacts by name"}>
           <FilterInput value={filter} onChange={this.filteringInput} />
         </Section>
+
         <Section title={"Contacts"}>
-          <ContactsList contacts={this.changeContactsByFilter()} />
+          <ContactsList
+            contacts={contacts}
+            deleteOnClickButton={this.deleteOnClickButton}
+          />
         </Section>
       </section>
     );
